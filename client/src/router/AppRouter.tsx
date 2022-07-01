@@ -1,11 +1,15 @@
-import React from "react";
+import React, {FC} from "react";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {LinksPage} from "../pages/LinksPage";
 import {CreatePage} from "../pages/CreatePage";
 import {DetailPage} from "../pages/DetailPage";
 import {AuthPage} from "../pages/AuthPage";
 
-const AppRouter = ({isRegistered}) => {
+interface AppRouterProps {
+  isRegistered: boolean;
+}
+
+const AppRouter: FC<AppRouterProps> = ({isRegistered}) => {
   return (
     <Routes>
       {isRegistered && (

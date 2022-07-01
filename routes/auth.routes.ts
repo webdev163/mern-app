@@ -1,10 +1,11 @@
-const { Router } = require('express');
-const bcrypt = require('bcryptjs');
-const config = require('config');
-const jwt = require('jsonwebtoken');
-const { check, validationResult } = require('express-validator');
+import { Router, Request, Response } from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { check, validationResult } from 'express-validator';
+import User from '../models/User';
+import config from '../config';
+
 const router = Router();
-const User = require('../models/User');
 
 router.post(
   '/register',
@@ -12,7 +13,7 @@ router.post(
     check('email', 'Invalid email').isEmail(),
     check('password', 'Password must be not less than 6 symbols').isLength({ min: 6 })
   ],
-  async (req, res) => {
+  async (req: Request, res: Response) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -46,7 +47,7 @@ router.post(
     check('email', 'Enter valid email').normalizeEmail().isEmail(),
     check('password', 'Enter valid password').exists()
   ],
-  async (req, res) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -72,7 +73,7 @@ router.post(
 
       const token = jwt.sign(
         { userId: user.id },
-        config.get('jwtSecret'),
+        config.jwtSecret,
         { expiresIn: '1h' }
       )
 

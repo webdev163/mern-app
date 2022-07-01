@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+import { Schema, model, Types } from 'mongoose';
 
 const schema = new Schema({
   email: { type: String, required: true, unique: true },
@@ -6,4 +6,4 @@ const schema = new Schema({
   links: [{ type: Types.ObjectId, ref: 'Link' }]
 })
 
-module.exports = model('User', schema);
+export default model('User', schema);
