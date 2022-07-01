@@ -1,6 +1,15 @@
+import React from 'react';
+import 'materialize-css';
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from './router/AppRouter';
+
 function App() {
   return (
-    <div>App</div>
+    <BrowserRouter>
+      <div className="container">
+        <AppRouter isRegistered={false} />
+      </div>
+    </BrowserRouter>
   );
 }
 
