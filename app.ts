@@ -5,6 +5,11 @@ import mongoose from 'mongoose';
 const app: Express = express();
 const PORT: number = config.port || 5000;
 
+
+const options: object = { extended: true }
+
+app.use(express.json(options));
+
 app.use('/api/auth', require('./routes/auth.routes'));
 
 async function start() {

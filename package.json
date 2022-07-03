@@ -5,7 +5,7 @@
   "main": "app.ts",
   "scripts": {
     "start": "node app.ts",
-    "server": "nodemon app.ts",
+    "server": "nodemon app.ts --ignore",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },

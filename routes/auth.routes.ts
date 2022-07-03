@@ -29,8 +29,8 @@ router.post(
       return res.status(400).json({ message: 'Such user already exists'})
     }
 
-    const hashedPassword = bcrypt.hash(password, 22);
-    const user = new User({ email: email, password: hashedPassword })
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const user = new User({ email: email, password: hashedPassword });
 
     await user.save();
 
