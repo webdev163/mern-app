@@ -1,13 +1,22 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 
+h1 {
+  font-size: 32px;
+}
+
 .card-action {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .btn {
-    margin: 5px 10px;
+  margin: 5px 10px;
+}
+
+.nav-wrapper {
+  padding-left: 20px;
+  padding-right: 10px;
 }
