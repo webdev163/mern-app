@@ -1,6 +1,7 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import {useHttp} from '../hooks/useHttp';
 import {useToast} from "../hooks/useToast";
+import { AuthContext } from '../context/AuthContext';
 
 export const AuthPage: FC = () => {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ export const AuthPage: FC = () => {
 
   const {loading, error, request, clearError} = useHttp();
   const message = useToast();
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     error && message(error);
@@ -25,9 +27,14 @@ export const AuthPage: FC = () => {
     try {
       const data = await request('api/auth/register', 'POST', {...form});
       message(data.message);
-    } catch (e) {
+    } catch (e) {}
+  }
 
-    }
+  const loginHandler = async () => {
+    try {
+      const data = await request('api/auth/login', 'POST', {...form});
+      auth.login(data.token, data.userId);
+    } catch (e) {}
   }
 
   return (
@@ -50,7 +57,7 @@ export const AuthPage: FC = () => {
             </div>
           </div>
           <div className="card-action">
-            <button className="btn blue darken-2" disabled={loading}>Login</button>
+            <button className="btn blue darken-2" onClick={loginHandler} disabled={loading}>Login</button>
             <button className="btn blue darken-2" onClick={registerHandler} disabled={loading}>Register</button>
           </div>
         </div>
