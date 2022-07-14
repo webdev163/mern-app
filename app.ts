@@ -1,4 +1,4 @@
-import express, {Express} from 'express';
+import express, { Express } from 'express';
 import config from './config';
 import mongoose from 'mongoose';
 
@@ -11,6 +11,7 @@ const options: object = { extended: true }
 app.use(express.json(options));
 
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/link', require('./routes/link.routes'));
 
 async function start() {
   try {
