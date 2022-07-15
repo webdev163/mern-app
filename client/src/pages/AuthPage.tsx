@@ -46,12 +46,11 @@ export const AuthPage: FC = () => {
             <span className="card-title">Authorization</span>
             <div className="wrapper">
               <div className="input-field">
-                <input id="email" type="text" className="validate" name="email" onChange={changeHandler}></input>
+                <input id="email" type="text" className="validate" name="email" value={form.email} onChange={changeHandler}></input>
                 <label htmlFor="email">Email</label>
               </div>
               <div className="input-field">
-                <input id="password" type="password" className="validate" name="password"
-                       onChange={changeHandler}></input>
+                <input id="password" type="password" className="validate" name="password" value={form.password} onChange={changeHandler}></input>
                 <label htmlFor="password">Password</label>
               </div>
             </div>

@@ -2,14 +2,15 @@ import { Router, Request, Response } from 'express';
 import Link from '../models/Link';
 import middleware from '../middleware/auth.middleware';
 import config from '../config';
-import { nanoid } from 'nanoid'
+import shortid from 'shortid';
+
 const router = Router();
 
 router.post('/generate', middleware, async (req: Request, res: Response) => {
   try {
     const baseUrl = config.baseUrl;
     const {from} = req.body;
-    const code = nanoid();
+    const code = shortid.generate();
 
     const exist = await Link.findOne({ from });
 
