@@ -3,6 +3,7 @@ import {LS_USER_DATA} from '../utils/constants';
 
 export const useAuth = () => {
   const [token, setToken] = useState<string | null>(null);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const [userId, setUserId] = useState<string | null>(null);
 
   const login = useCallback((jwtToken: string, id: string) => {
@@ -23,7 +24,9 @@ export const useAuth = () => {
     if (data && data.token) {
       login(data.token, data.userId)
     }
+
+    setIsReady(true);
   }, [login])
 
-  return { login, logout, token, userId }
+  return { login, logout, token, userId, isReady }
 }
