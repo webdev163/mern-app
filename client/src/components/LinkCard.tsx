@@ -1,12 +1,8 @@
 import React, { FC } from 'react';
+import { Link } from '../types/modals';
 
 interface LinkCardProps {
-  link: {
-    to: string,
-    from: string,
-    clicks: number,
-    date: Date
-  }
+  link: Link
 }
 
 export const LinkCard: FC<LinkCardProps> = ({ link }) => {
