@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link } from '../types/modals';
+import { Link } from '../types/models';
 import { Link as NavLink } from 'react-router-dom';
 
 interface LinksListProps {
