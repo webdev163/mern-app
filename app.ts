@@ -12,6 +12,7 @@ app.use(express.json(options));
 
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/link', require('./routes/link.routes'));
+app.use('/to', require('./routes/redirect.routes'));
 
 async function start() {
   try {
