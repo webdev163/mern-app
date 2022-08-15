@@ -5,8 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "start": "cross-env NODE_ENV=production ts-node app.ts",
-    "server": "nodemon app.ts --ignore",
-    "client": "npm run start --prefix client",
+    "server": "cross-env NODE_ENV=development nodemon --ignore --exitcrash app.ts",
+    "client": "cross-env NODE_ENV=development npm run start --prefix client",
     "client-install": "npm install --prefix client",
     "client-build": "npm run build --prefix client",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
